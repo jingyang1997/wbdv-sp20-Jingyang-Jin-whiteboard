@@ -18,10 +18,10 @@ public class Widget {
 
     private String type = "HEADING";
     private Integer order;
-    private String text;
+    private String text = "";
     private String src;
     private String url;
-    private Integer size = 2;
+    private Integer size = 1;
     private Integer width;
     private Integer height;
     private String cssClass;
