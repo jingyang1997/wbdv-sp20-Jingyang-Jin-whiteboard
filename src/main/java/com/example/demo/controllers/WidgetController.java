@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class WidgetController {
     WidgetService service = new WidgetService();
     @GetMapping("/api/widgets")
@@ -32,5 +32,9 @@ public class WidgetController {
     @PutMapping("/api/widgets/{wid}")
     public int updateWidget(@PathVariable("wid") String wid, @RequestBody Widget widget){
         return service.updateWidget(wid, widget);
+    }
+    @PutMapping("/api/widgets")
+    public int updateAllWidgets(@RequestBody List<Widget> widgets){
+        return service.updateAllWidgets(widgets);
     }
 }

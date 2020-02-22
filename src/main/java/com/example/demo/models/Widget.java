@@ -1,5 +1,8 @@
 package com.example.demo.models;
 
+import java.util.Date;
+import java.util.UUID;
+
 public class Widget {
     private String name = "New Widget";
     private String id;
@@ -129,8 +132,6 @@ public class Widget {
         this.value = value;
     }
 
-    public Widget(String wid, String name){
-        this.id = wid;
-        this.name = name;
+    public Widget(){
     }
 }
