@@ -1,23 +1,24 @@
 package com.example.demo.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 
-import java.util.Date;
-import java.util.UUID;
-
+@Entity
 public class Widget {
-    private String name = "New Widget";
-    private String id;
-    private String topicid;
-
-    public String getTopicid() {
-        return topicid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name = "Widget Name";
+    @ManyToOne
+    @JsonIgnore
+    private Topic topic;
+    public Topic getTopic() {
+        return topic;
     }
-
-    public void setTopicid(String topicid) {
-        this.topicid = topicid;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
-
     private String type = "HEADING";
-    private Integer order;
     private String text = "";
     private String src;
     private String url;
@@ -28,6 +29,16 @@ public class Widget {
     private String style;
     private String value;
 
+    public Integer getOrd() {
+        return ord;
+    }
+
+    public void setOrd(Integer ord) {
+        this.ord = ord;
+    }
+
+    private Integer ord = 0;
+
     public String getName() {
         return name;
     }
@@ -36,11 +47,11 @@ public class Widget {
         this.name = name;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,13 +63,6 @@ public class Widget {
         this.type = type;
     }
 
-    public Integer getOrder() {
-        return order;
-    }
-
-    public void setOrder(Integer order) {
-        this.order = order;
-    }
 
     public String getText() {
         return text;
